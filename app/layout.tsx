@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from 'next/font/local'
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const myFont = localFont({ src: './ClashDisplay-Regular.woff2' })
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`flex flex-col justify-between items-center min-h-screen ${myFont.className}`}>
+        <div className="w-[90%] max-w-[1440px]">
+        {children}
+        </div>
+      </body>
     </html>
   );
 }
